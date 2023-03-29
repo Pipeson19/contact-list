@@ -1,32 +1,28 @@
-// Crea una lista de contactos con datos predefinidos
-let contactList = ["Juan Perez", "Maria Garcia", "Pedro Lopez", "Laura Torres"];
+// Declaración de una lista vacía para almacenar los contactos
+let contactos = [];
 
-// Función para agregar un nuevo contacto a la lista
-function addContact(contact, contactList) {
-  contactList.push(contact);
+// Función para crear un nuevo contacto
+function crearContacto(id, nombres, apellidos, telefono, ubicaciones) {
+  // Crear un objeto de contacto con las propiedades proporcionadas
+  const contacto = {
+    id: '',
+    nombres: '',
+    apellidos: '',
+    telefono: '',
+    ubicaciones: ''
+  };
+  // Agregar el objeto de contacto a la lista de contactos
+  contactos.push(contacto);
 }
 
-// Función para eliminar un contacto existente de la lista
-function deleteContact(contact, contactList) {
-  let index = contactList.indexOf(contact);
-  if (index !== -1) {
-    contactList.splice(index, 1);
+// Función para eliminar un contacto por su ID
+function eliminarContacto(id) {
+  // Buscar el índice del contacto con el ID proporcionado
+  const indice = contactos.findIndex(contacto => contacto.id === id);
+  // Si se encuentra el contacto, eliminarlo de la lista de contactos
+  if (indice !== -1) {
+    contactos.splice(indice, 1);
   }
 }
 
-// Función para imprimir en consola los contactos presentes en la lista
-function printContacts(contactList) {
-  console.log("Lista de contactos:");
-  contactList.forEach(function(contact) {
-    console.log(contact);
-  });
-}
-
-// Agrega un nuevo contacto a la lista
-addContact("Sofia Ramirez", contactList);
-
-// Elimina un contacto de la lista
-deleteContact("Maria Garcia", contactList);
-
-// Imprime en consola los contactos presentes en la lista
-printContacts(contactList);
+console.log(contactos)
