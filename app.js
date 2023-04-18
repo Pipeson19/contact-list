@@ -62,3 +62,39 @@ agregarContacto("Ana Gómez", "555-3456");
 imprimirContactos();
 eliminarContacto("María López");
 imprimirContactos();
+// Función para eliminar un contacto existente de la lista
+function deleteContact(id) {
+  contactList = contactList.filter(function(contact) {
+    return contact.id !== id;
+  });
+}
+
+// Función para actualizar un contacto existente en la lista
+function updateContact(id, updatedFields) {
+  let contactToUpdate = contactList.find(function(contact) {
+    return contact.id === id;
+  });
+
+  Object.assign(contactToUpdate, updatedFields);
+}
+
+// Función para imprimir en consola los contactos presentes en la lista
+function printContacts() {
+  contactList.forEach(function(contact) {
+    console.log(`ID: ${contact.id} | Nombre: ${contact.name} | Teléfono: ${contact.phone} | Ciudad: ${contact.location.city} | Dirección: ${contact.location.address}`);
+  });
+}
+
+// Agregamos un nuevo contacto
+addContact('Pedro Martinez', '5555555', {city: 'Monterrey', address: 'Av. Constitucion 789'});
+
+// Imprimimos los contactos antes de actualizar
+console.log('Contactos antes de actualizar:');
+printContacts();
+
+// Actualizamos el contacto con ID 2
+updateContact(2, {name: 'Ana Torres', phone: '1111111', location: {city: 'Puebla', address: 'Calle 1'}});
+
+// Imprimimos los contactos después de actualizar
+console.log('Contactos después de actualizar:');
+printContacts();
